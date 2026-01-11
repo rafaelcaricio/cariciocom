@@ -73,10 +73,9 @@ The real value here isn't in the prompts themselves, but in identifying opportun
 
 I've recorded a quick demo of the tool in action. You can install the shortcut and try it yourself by using the [Claude version of the Shortcut](https://www.icloud.com/shortcuts/6170ae3f58dc4e42b075307ad152a135) or the [ChatGPT version](https://www.icloud.com/shortcuts/fe65676260904e5e9990af0e898ff78c). Feel free to modify the prompts for your own needs with different languages and countries.
 
-https://youtube.com/shorts/Qdv4fHdBfOw?si=io3TeGQurtY0IYyE 
-[code] 
-    _Note: You'll need to have either Claude or ChatGPT installed in your iOS device to use this tool._
-[/code]
+https://youtube.com/shorts/Qdv4fHdBfOw?si=io3TeGQurtY0IYyE
+
+{{ alert(type="note", icon="info", title="Prerequisites", text="You'll need to have either Claude or ChatGPT installed on your iOS device to use this tool.") }}
 
 Sometimes the best solutions come from scratching your own itch, even if it's right before bedtime. This is not my first time, and I don't expect it to be the last. 😴
 

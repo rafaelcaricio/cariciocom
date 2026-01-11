@@ -12,7 +12,7 @@ A few days ago I had to deflate some compressed content using Rust. I quickly fo
 I wrote my small CLI tool, and it seemed to work perfectly on the first run. It was all nice until some time later. I have noticed that some lines of my compressed file were missing. The code was running fine and didn't provide any warnings. After a few hours of debugging, I was sure there was a bug in my code somewhere. I went on and wrote a bunch more test to try to isolate in a reproducible way, where the problem was present, without any luck. All tests passing and no indication of problems anywhere.
 
 At some point, I decided to use a sample from the original compressed files, and that is how I managed to reproduce the bug. The sample code in the README of the flate2 crate was what I used in my code:
-[code] 
+```rust
     use std::io::prelude::*;
     use flate2::read::GzDecoder;
     
@@ -22,10 +22,14 @@ At some point, I decided to use a sample from the original compressed files, and
         d.read_to_string(&mut s).unwrap();
         println!("{}", s);
     }
-[/code]
+```
 
-Unfortunately, the `GzDecoder` cannot successfully decompress my files. I went then to the official library repository and found [this issue](https://github.com/rust-lang/flate2-rs/issues/301) which describes exactly my problem. I had to use the `MultiGzDecoder` instead, it all worked as expected after this change and I could decompress successfully my files. The example in the README of flate2 should probably be this:
-[code] 
+Unfortunately, the `GzDecoder` cannot successfully decompress my files. I went then to the official library repository and found [this issue](https://github.com/rust-lang/flate2-rs/issues/301) which describes exactly my problem.
+
+{{ alert(type="tip", icon="lightbulb", title="Solution: Use MultiGzDecoder", text="If GzDecoder fails to decompress your files silently, use MultiGzDecoder instead. It handles multiple gzip members in a single stream, which is common in concatenated gzip files.") }}
+
+I had to use the `MultiGzDecoder` instead, and it all worked as expected after this change. The example in the README of flate2 should probably be this:
+```rust
     use std::io::prelude::*;
     use flate2::read::GzDecoder;
     
@@ -35,6 +39,6 @@ Unfortunately, the `GzDecoder` cannot successfully decompress my files. I went t
         d.read_to_string(&mut s).unwrap();
         println!("{}", s);
     }
-[/code]
+```
 
 Finally, I still don't know why the `MultiGzDecoder` works when the `GzDecoder` don't. If you know, I will update this blog with your answer.

@@ -4,22 +4,61 @@ base_url = "https://caricio.com"
 title = "Rafael Caricio"
 description = "Writing for fun and food."
 
+theme = "terminus"
+
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
+
+# When set to "true", a feed is automatically generated
+generate_feeds = true
 
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
+# Default author for pages
+author = "Rafael Caricio"
+
+# The taxonomies to be rendered for the site
 taxonomies = [
     {name = "categories", feed = true},
     {name = "tags", feed = true},
 ]
 
+# Markdown configuration
 [markdown]
-
+# Syntax highlighting configuration (Zola 0.22.0+)
 [markdown.highlighting]
-theme = "catppuccin-mocha"
+# Theme for syntax highlighting - using dracula to avoid white space bug
+theme = "dracula"
 
+# Menu links
 [extra]
+layout = "center"
+show_default_author = false
+# Enable KaTeX for mathematical formulas
+katex = true
+# Enable copy button for code blocks
+copy_button = true
 
-# Put all your custom variables here
+[[extra.main_menu]]
+name = "Blog"
+url = "blog"
+trailing_slash = true
+
+[[extra.main_menu]]
+name = "About"
+url = "about-me"
+trailing_slash = true
+
+[[extra.main_menu]]
+name = "Blogroll"
+url = "recommended-content"
+trailing_slash = true
+
+# Social media links
+[[extra.socials]]
+name = "github"
+url = "https://github.com/rafaelcaricio"
+
+# Copyright text
+copyright = "© $YEAR Rafael Caricio :: Powered by [Zola](https://www.getzola.org) :: Theme by [Terminus](https://github.com/ebkalderon/terminus)"

@@ -11,15 +11,15 @@ tags = ['opnion', 'rust']
 When writing code in any programming language, choosing the appropriate constructs is crucial for creating readable and maintainable code, and in Rust is no different. In this post, I will discuss a specific dilemma I find myself thinking often about: deciding between using combinators or match clauses.
 
 Let's consider an example where in an application we need to retrieve the value of an environment variable, convert it to a map, and then serialize it to JSON. The first approach uses combinators and closures:
-[code] 
+```rust
     std::env::var("SELECTOR")
         .ok()
         .and_then(|env_var| selector_field(env_var.as_str()).ok())
         .map(|sel_map| serde_json::to_value(sel_map).unwrap())
-[/code]
+```
 
 I ignore the declaration of the `fn selector_field(&str) -> Option<BTreeMap<String, String>>` function for simplification. This version is concise and elegant, but doesn't log any warnings if and for what reason the result turns out to be `None`. To add some context and make it easier for debugging, we can log some useful information. We can modify the code like this:
-[code] 
+```rust
     std::env::var("SELECTOR")
         .map_err(|err| {
             log::warn!("Failed to find environment configuration for selector: {}", err);
@@ -33,10 +33,10 @@ I ignore the declaration of the `fn selector_field(&str) -> Option<BTreeMap<Stri
                 .ok()
         })
         .map(|sel_map| serde_json::to_value(sel_map).unwrap())
-[/code]
+```
 
 While functional, this version feels convoluted and harder to read due to the nested closures. In such cases, I tend to use a match clause, as I think it is a better option:
-[code] 
+```rust
     let env_var = match std::env::var("SELECTOR") {
         Ok(env_var) => env_var,
         Err(err) => {
@@ -52,7 +52,7 @@ While functional, this version feels convoluted and harder to read due to the ne
         }
     };
     Some(serde_json::to_value(sel_map).unwrap())
-[/code]
+```
 
 This version is more readable and easier to understand. Thus, I think it's useful to consider the following guidelines when choosing between combinators and match clauses:
 

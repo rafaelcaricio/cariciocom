@@ -9,18 +9,18 @@ tags = ['gstreamer', 'howto', 'multimedia']
 +++
 
 Today I was working on a project that uses [GStreamer](https://gstreamer.freedesktop.org/) and reads content using the [SRT protocol](https://www.srtalliance.org/) on my macOS. The [SRT elements](https://gstreamer.freedesktop.org/documentation/srt/index.html?gi-language=c) could not be found in my system after installing GStreamer using [Homebrew](https://brew.sh/). I’ve installed all the GStreamer sub-packages from Homebrew.
-[code] 
+```
     $ brew install gstreamer gst-plugins-base \
         gst-plugins-good gst-plugins-bad \
         gst-plugins-ugly gst-libav \
         gst-rtsp-server gst-editing-services
-[/code]
+```
 
 Still, I could not find the `strsrc` element, for example.
-[code] 
+```text
     $ gst-launch-1.0 -v srtsrc uri="srt://127.0.0.1:7001" ! fakesink
     WARNING: erroneous pipeline: no element "srtsrc"
-[/code]
+```
 
 For some reason, not clear to me at the time, I did not have the plugin installed. This triggered me to look at the source code of GStreamer to find how the element is enabled. I know that GStreamer contains many plugins that depend on different third-party libraries. The SRT set of elements, resides in the [`gst-plugins-bad`](https://gitlab.freedesktop.org/gstreamer/gstreamer/-/tree/main/subprojects/gst-plugins-bad) bundle. Then it was clear to me that the SRT elements are only compiled if the [libsrt](https://github.com/hwangsaeul/libsrt) is available in the host system at compilation time.
 
@@ -37,29 +37,29 @@ As I was guessing, libsrt is not a dependency of that formula. This means that t
 We need to modify the `gst-plugins-bad` formula locally and then install from source.
 
 First, we uninstall the `gst-plugins-bad` formula.
-[code] 
+```
     $ brew rm gst-plugins-bad
-[/code]
+```
 
 Then we can edit our local formula to add the `libsrt` dependency. This is not strictly required, as we could just install libsrt manually and then recompile from source. But we will add here anyway, so we make sure we will not override this next time the package update. The following command will open your default editor as defined in the `EDITOR` environment variable.
-[code] 
+```
     $ brew edit gst-plugins-bad
-[/code]
+```
 
 Add the line below to the dependency list:
-[code] 
+```
     depends_on "srt"
-[/code]
+```
 
 We now install the package from source.
-[code] 
+```
     $ brew reinstall --build-from-source gst-plugins-bad
-[/code]
+```
 
 That's it. Now you should have the SRT plugin installed and all its elements will be available in your system. We can double-check that by inspecting the one element, like the `srtsrc`.
-[code] 
+```
     $ gst-inspect-1.0 srtsrc
-[/code]
+```
 
 You should see something like:
 

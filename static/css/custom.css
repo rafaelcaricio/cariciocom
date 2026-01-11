@@ -1,0 +1,12 @@
+/* Fix copy button positioning for Giallo syntax highlighter */
+pre.giallo {
+    position: relative;
+}
+
+/* Ensure copy button is positioned correctly within code blocks */
+.copy-button {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    z-index: 10;
+}

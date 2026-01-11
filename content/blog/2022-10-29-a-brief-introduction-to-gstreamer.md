@@ -56,7 +56,7 @@ You now know about elements and their most common types. How to put them togethe
 ![](/wp-content/uploads/2022/10/Example-Pipeline.jpg)
 
 Inspired by Javascript and HTML manipulation, one could imagine pseudocode like this:
-[code] 
+```rust
     // Create our pipeline container
     let pipeline = createElement("pipeline");
     
@@ -91,7 +91,7 @@ Inspired by Javascript and HTML manipulation, one could imagine pseudocode like 
     pipeline.waitUntilEnd();
     
     pipeline.dispatchEvent("stop");
-[/code]
+```
 
 In this pseudocode, we are creating elements and manipulating them to connect together inside a pipeline container. If you have ever worked with web development, this should look familiar. This is comparable with how you will be thinking when working with GStreamer.
 
@@ -106,33 +106,35 @@ Let's translate this example to real GStreamer code to play a WAV file. We need 
 
 
 Using GStreamer API in [Rust](https://www.rust-lang.org/) it looks like this:
-[code] 
+
+{% wide_container() %}
+```rust
     fn main() {
         gst::init().unwrap();
-        
+
         // Create our pipeline container
         let pipeline = gst::Pipeline::default();
-    
+
         let file_reader = gst::ElementFactory::make("filesrc").build().unwrap();
         file_reader.set_property("location", "/Users/rafaelcaricio/astronaut.wav");
-    
+
         let demuxer = gst::ElementFactory::make("decodebin").build().unwrap();
         let audio_device = gst::ElementFactory::make("autoaudiosink").build().unwrap();
-    
+
         pipeline.add(&file_reader).unwrap();
         pipeline.add(&demuxer).unwrap();
         pipeline.add(&audio_device).unwrap();
-    
+
         file_reader.link(&demuxer).unwrap();
-    
+
         // Our event listener to connect pads later on
         let audio_device_pad = audio_device.static_pad("sink").unwrap();
         demuxer.connect_pad_added(move |_, pad| {
             pad.link(&audio_device_pad).unwrap();
         });
-    
+
         pipeline.set_state(gst::State::Playing).unwrap();
-        
+
         // Wait until end, handle errors, etc
         let bus = pipeline.bus().unwrap();
         for msg in bus.iter() {
@@ -145,10 +147,11 @@ Using GStreamer API in [Rust](https://www.rust-lang.org/) it looks like this:
                 _ => continue,
             }
         }
-    
+
         pipeline.set_state(gst::State::Null).unwrap();
     }
-[/code]
+```
+{% end %}
 
 As you can see, the fake JavaScript API we created for manipulating elements (like they would be HTML elements) and the real GStreamer API are analogous. The GStreamer API is vast and provides many operations to manipulate elements inside pipelines or inside other elements (also called bins). There are elements for many different operations you might want to do, not only conversion of content types.
 
