@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(./venv/bin/python:*)",
+      "Bash(python3:*)",
+      "Bash(zola build:*)",
+      "Bash(test:*)",
+      "Bash(curl:*)",
+      "WebFetch(domain:caricio.com)",
+      "WebFetch(domain:www.getzola.org)",
+      "Skill(frontend-design)"
+    ]
+  }
+}

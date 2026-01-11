@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Blog | {{ config.title }}{% endblock title %}
+
+{% block content %}
+    <h1>Blog</h1>
+    {% if paginator %}
+        {% for page in paginator.pages %}
+            <article>
+                <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
+                <p class="date">{{ page.date }}</p>
+                {% if page.description %}
+                    <p class="excerpt">{{ page.description }}</p>
+                {% endif %}
+                {% if page.taxonomies.categories %}
+                    <p class="categories">
+                        Categories: 
+                        {% for cat in page.taxonomies.categories %}
+                            <a href="/categories/{{ cat | slugify }}">{{ cat }}</a>{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                {% endif %}
+                {% if page.taxonomies.tags %}
+                    <p class="tags">
+                        Tags: 
+                        {% for tag in page.taxonomies.tags %}
+                            <a href="/tags/{{ tag | slugify }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                {% endif %}
+            </article>
+            <hr>
+        {% endfor %}
+        
+        <div class="pagination">
+            {% if paginator.previous %}
+                <a href="{{ paginator.previous | safe }}">&larr; Newer</a>
+            {% endif %}
+            <span>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+            {% if paginator.next %}
+                <a href="{{ paginator.next | safe }}">Older &rarr;</a>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock content %}

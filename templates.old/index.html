@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ config.title }}{% endblock title %}
+
+{% block content %}
+    <h1>Welcome to {{ config.title }}</h1>
+    <p>Writing for fun and food.</p>
+    
+    <h2>Recent Posts</h2>
+    <ul>
+        {% set blog_section = get_section(path="blog/_index.md") %}
+        {% if blog_section %}
+            {% for page in blog_section.pages | slice(end=5) %}
+                <li>
+                    <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+                    <small>{{ page.date }}</small>
+                </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+    
+    <p><a href="/blog">View all posts &rarr;</a></p>
+{% endblock content %}
