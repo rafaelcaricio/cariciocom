@@ -14,16 +14,12 @@ I'm a technology enthusiast and programmer. This is my personal blog where I sha
 
 I explore content related to:
 
-- Rust and Python programming languages
 - General programming concepts
-- GStreamer technology
+- Multimedia technology
 - Open Source and FOSS initiatives
 - Mechanical keyboards
-- Web development
 - Technology in general
 
 ## Credits
-
-The website's icon comes from an emoji collection created by Abacaxi, available at their [neocities website](https://eurritimia.neocities.org/emoji.html).
 
 This blog is powered by [Zola](https://www.getzola.org) and uses the [Terminus](https://github.com/ebkalderon/terminus) theme.

@@ -1,11 +1,11 @@
 +++
-title = "wav1c - Rust AV1 encoder implementation in less than 24 hours"
+title = "An Exercise in Agentic Coding: AV1 Encoder from Scratch in Rust"
 date = 2026-02-16
-slug = "wav1c-rust-av1-encoder-implementation-in-less-than-24-hours"
+slug = "an-exercise-in-agentic-coding-av1-encoder-from-scratch-in-rust"
 
 [taxonomies]
-categories = ['multimedia']
-tags = ['agentic-coding', 'video', 'codecs', 'multimedia', 'av1', 'av2']
+categories = ['multimedia', 'rust']
+tags = ['agentic-coding', 'video', 'codecs', 'av1']
 +++
 
 It's a contentious time to be a software engineer. Some of us really love agentic coding, others hate it with passion. Some say it makes them super-productive, for others it's just useless slop.
