@@ -8,19 +8,24 @@ categories = ['multimedia']
 tags = ['agentic-coding', 'video', 'codecs', 'multimedia']
 +++
 
-It is a contentious time to be a software engineer, some people love agentic coding and some hate it. People say they are super-productive, others say it is just useless slop. Over a year ago I thought agentic coding was a fad, I was even annoyed by the AI auto-complete. Until I tried [Cline (VS Code plugin)](https://cline.bot/) in November 2024. Since then I realized that tools for writing software were changing and I needed to pay attention. I'm a curious person and love to learn new technologies. Whoever worked with me (or knows me well) is aware that I sometimes get obsessed about things and love to experiment.
+Because of AI it is a contentious time to be a software engineer, some people love agentic coding and some hate it. People say they are super-productive, others say it is just useless slop. Over a year ago I thought agentic coding was a fad, I was even annoyed by the AI auto-complete. Until I tried [Cline (VS Code plugin)](https://cline.bot/) in November 2024. Since then I realized that tools for writing software were changing and I needed to pay attention. I'm a curious person and love to learn new technologies. Whoever worked with me (or knows me well) is aware that I sometimes get obsessed about things and love to experiment.
 
 Fast-forward, I tried a lot of agentic coding using Claude Code, but mostly it was quite basic usage or plus it demanded a lot of steering. Many times I would choose to write code myself. But since the release of Claude Opus 4.5, I noticed a leap, it required a lot less steering. I liked the code the model was producing and that made me want to push further on what to build with it.
 
 I wanted something more impressive to me than a React/Three.js single-page animation. I asked myself what could be some complex task that I know it would take me a year or more of my hobby time. Something that could resonate with my peers in the multimedia space: AV1 encoder. In Rust (of course), no dependencies, no unsafe code. I was pretty confident the model would fail. Then I arrived at a working version in less than 12 hours. 😳
 
-[Video Player HLS.js?]
+<figure style="text-align: center;">
+  <video controls playsinline width="320" height="240" style="display: block; margin: 0 auto;">
+    <source src="wav1c-demo.mp4" type="video/mp4">
+  </video>
+  <figcaption style="font-size: 0.85em; opacity: 0.7; font-style: italic;">This is me encoded with wav1c</figcaption>
+</figure>
 
 It is not the best AV1 encoder by any measurement, nor it is the fastest, and many other flaws. The point here is that I could develop a usable AV1 encoder in less than a day. It is specification compliant and we can decode the resulting bitstream with [dav1d](https://code.videolan.org/videolan/dav1d), hardware decoder via macOS VideoToolbox API, and potentially by any other AV1 decoder (I haven't tried all of them myself, so I will let you exercise this and let me know). This is fascinating to me as writing video encoders, even a bad one, is not a "less than a day" task, especially when we are talking about [a production video codec like AV1](https://netflixtechblog.com/av1-now-powering-30-of-netflix-streaming-02f592242d80).
 
 I still need to reflect more about what the implications of this are. Specification based development seems to be a great fit for agentic coding with a self-verification loop, encode/decode. A lower bar for custom encoders/decoders could mean custom encoding profiles that go beyond a change of parameters. Like custom transform or prediction logic baked into the encoder, as opposed to just tweaking qp/rate-control knobs. Also trimmed down encoders/decoders could be used in embedded devices or embedded on a website. I have also created a [simple demo](https://rafaelcaricio.github.io/wav1c_demo/) to show how wav1c (Wondrous AV1 Coder) [compiled to WASM](https://github.com/rafaelcaricio/wav1c/tree/main/wav1c-wasm) and doing encoding to AV1 in realtime. I cared to show some stats so we can look a little deeper on what is going on. Do not expect high quality images, but it absolutely works. You can download the fMP4 file and play in VLC or QuickTime (if you have AV1 hardware support as of M3 or more recent MacBook). Even without practical production uses, this is a very small codebase that can also be used for learning and to spark creativity.
 
-![](Demo web UI)
+![Demo web UI](demo-web-ui.avif)
 
 If you want to try locally, I also included [a patch file](https://github.com/rafaelcaricio/wav1c/blob/main/ffmpeg-libwav1c.patch) you can apply and use wav1c with FFmpeg.
 
