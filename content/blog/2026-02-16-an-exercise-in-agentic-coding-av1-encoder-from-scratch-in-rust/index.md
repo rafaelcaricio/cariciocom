@@ -22,7 +22,7 @@ I wanted to create something more impressive to me than, say, a React/Three.js s
   <figcaption style="font-size: 0.85em; opacity: 0.7; font-style: italic;">This is me encoded with wav1c (initial version)</figcaption>
 </figure>
 
-It's not the best AV1 encoder by any measure, nor the fastest. The point is: I was able to develop a usable AV1 encoder in less than a day. It is specification compliant and we can decode the resulting bitstream with [dav1d](https://code.videolan.org/videolan/dav1d) hardware decoder via macOS VideoToolbox API and, potentially, by any other AV1 decoder (I haven't tested all of them myself. If you do, let me know). To me, this was an astonishing exercise, as writing video encoders (even a bad one), is not a “less than a day” kind of task. Even more so, when we're talking about [a production video codec like AV1](https://netflixtechblog.com/av1-now-powering-30-of-netflix-streaming-02f592242d80).
+It's not the best AV1 encoder by any measure, nor the fastest. The point is: I was able to develop a usable AV1 encoder in less than a day. It is specification compliant and we can decode the resulting bitstream with [dav1d](https://code.videolan.org/videolan/dav1d), hardware decoder via macOS VideoToolbox API and, potentially, by any other AV1 decoder (I haven't tested all of them myself. If you do, let me know). To me, this was an astonishing exercise, as writing video encoders (even a bad one), is not a "less than a day" kind of task. Even more so, when we're talking about [a production video codec like AV1](https://netflixtechblog.com/av1-now-powering-30-of-netflix-streaming-02f592242d80).
 
 I still need to reflect more on the implications of my exercise. Specification-based development seems to be a great fit for agentic coding with a self-verification loop, encode/decode. A lower bar for custom encoders/decoders could mean being able to create custom encoding profiles that go beyond just a change of parameters, e.g. having a custom transform or prediction logic baked into the encoder, as opposed to simply tweaking qp/rate-control knobs. Trimmed down encoders/decoders could also be used in embedded devices or embedded on a website. I created a [simple demo](https://rafaelcaricio.github.io/wav1c_demo/) to show how wav1c (Wondrous AV1 Coder) [compiled to WASM](https://github.com/rafaelcaricio/wav1c/tree/main/wav1c-wasm) can encode to AV1 in real time, no server-side processing needed. I added some stats so that we can take a closer look at what is going on. Do not expect high quality images, but it absolutely works. You can download the MP4 file and play it in VLC or QuickTime (if you have AV1 hardware support as of M3 or more recent MacBook). Even without any practical applications, this code base can also be used simply for learning and to spark creativity.
 
@@ -66,7 +66,8 @@ make -j$(nproc)
 ./ffmpeg -i input.y4m -c:v libwav1c -wav1c-q 64 output.mp4
 ```
 
-You can embbed wav1c in your Rust project, or embedded microcontroller firmare. The Rust API is very straight forward to use:
+You can embbed wav1c in your Rust project, or embedded microcontroller firmware. The Rust API is very straight forward to use:
+
 ```rust
 use wav1c::{Encoder, EncoderConfig, FrameType};
 use wav1c::y4m::FramePixels;
