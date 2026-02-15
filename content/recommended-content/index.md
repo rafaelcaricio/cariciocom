@@ -8,10 +8,10 @@ A curated collection of blogs and podcasts from creators whose content I regular
 
 ## Blogs
 
-- **[Stephen Diehl](https://stephendiehl.com/blog.html)** - Features commentary examining digital finance and contemporary scams
-- **[Kevquirk](https://kevquirk.com)** - Provides consistently high-quality material across various topics
+- **[Netflix Techblog](https://netflixtechblog.com/)** - Learn what my co-workers and I are working on
+- **[Kevquirk](https://kevquirk.com/)** - Provides consistently high-quality material across various topics
+- **[Stephen Diehl](https://www.stephendiehl.com/posts/)** - Features commentary examining digital finance and contemporary scams
 
 ## Podcasts
 
-- **[Tech Won't Save Us](https://techwontsave.us)** - Explores critical issues affecting the technology sector
-- **[GRIFTONOMICS](https://anchor.fm/griftonomics)** - Examines deceptive tactics employed by individuals and organizations. The series concluded but remains valuable listening
+- **[The Pragmatic Engineer](https://open.spotify.com/show/2Bho9xCbOQMWMJ7UKmqCzD?si=b89a8028172d4afe)** - Relevant content for sowftware engineers or anyone interested in working in tech.
