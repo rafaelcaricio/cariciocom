@@ -6,6 +6,10 @@ slug = "an-exercise-in-agentic-coding-av1-encoder-from-scratch-in-rust"
 [taxonomies]
 categories = ['multimedia', 'rust']
 tags = ['agentic-coding', 'video', 'codecs', 'av1']
+
+[extra.social_media_image]
+path = "demo-web-ui.avif"
+alt_text = "The wav1c demo page, realtime AV1 encoding in the browser with WASM"
 +++
 
 It's a contentious time to be a software engineer. Some of us really love agentic coding, others hate it with passion. Some say it makes them super-productive, for others it's just useless slop.
