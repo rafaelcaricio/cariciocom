@@ -8,7 +8,7 @@ categories = ['multimedia', 'rust']
 tags = ['agentic-coding', 'video', 'codecs', 'av1']
 
 [extra.social_media_image]
-path = "demo-web-ui.avif"
+path = "demo-web-ui.png"
 alt_text = "The wav1c demo page, realtime AV1 encoding in the browser with WASM"
 +++
 
