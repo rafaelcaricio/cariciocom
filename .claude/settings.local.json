@@ -10,7 +10,17 @@
       "Bash(curl:*)",
       "WebFetch(domain:caricio.com)",
       "WebFetch(domain:www.getzola.org)",
-      "Skill(frontend-design)"
+      "Skill(frontend-design)",
+      "mcp__filesystem__directory_tree",
+      "mcp__filesystem__read_text_file",
+      "mcp__web-browser__inspect_page",
+      "mcp__web-browser__click_element",
+      "mcp__web-browser__validate_page",
+      "mcp__web-browser__open_tab",
+      "mcp__web-browser__scroll_down",
+      "Bash(unzip:*)",
+      "mcp__Claude_Preview__preview_start",
+      "WebFetch(domain:claude.com)"
     ]
   }
 }

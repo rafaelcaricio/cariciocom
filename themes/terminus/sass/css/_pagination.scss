@@ -1,5 +1,5 @@
 .pagination {
-    margin-top: 50px;
+    margin-top: 40px;
 
     @media print {
         display: none;
@@ -10,14 +10,10 @@
         align-items: center;
         justify-content: center;
         flex-flow: row wrap;
+        gap: 16px;
         padding-bottom: 30px;
         list-style: none;
         margin: 0;
-
-        >*:not(:first-child)::before {
-            content: '::';
-            margin: 0 10px;
-        }
 
         li {
             display: inline-flex;
@@ -26,6 +22,16 @@
                 display: inline-flex;
                 text-wrap: nowrap;
                 text-decoration: none;
+                padding: 8px 20px;
+                border: 1px solid var(--accent-color);
+                color: var(--accent-color);
+                font-size: calc(var(--font-size) * 0.85);
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background: var(--accent-color);
+                    color: var(--background-color);
+                }
             }
         }
     }

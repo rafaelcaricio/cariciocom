@@ -1,15 +1,63 @@
 @font-face {
-    font-family: 'Fira Code';
+    font-family: 'Instrument Serif';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('/fonts/FiraCode-Regular.woff2') format('woff2');
+    src: url('/fonts/InstrumentSerif-Regular.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: 'Fira Code';
-    font-style: normal;
-    font-weight: 800;
+    font-family: 'Instrument Serif';
+    font-style: italic;
+    font-weight: 400;
     font-display: swap;
-    src: url('/fonts/FiraCode-Bold.woff2') format('woff2');
+    src: url('/fonts/InstrumentSerif-Italic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Literata';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/Literata-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Literata';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/Literata-Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Literata';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/Literata-Italic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Literata';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/Literata-BoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/JetBrainsMono-Bold.woff2') format('woff2');
 }

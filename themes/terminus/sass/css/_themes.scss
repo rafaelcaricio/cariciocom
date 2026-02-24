@@ -1,10 +1,10 @@
 :root {
     // Default theme (Purple-Gold)
     &:has(body[data-theme="terminus"]) {
-        --background-color: #1a0a2e;        // Midnight purple (very dark)
-        --text-color: #b9a1e9;              // Biloba Flower (light purple)
-        --accent-color: #e7ba09;            // Corn (gold/yellow)
-        --footnote-color: rgba(185, 161, 233, 0.6); // Muted light purple
+        --background-color: #191a24;        // Ink blue (deep editorial)
+        --text-color: #ccc9d8;              // Lavender gray
+        --accent-color: #7c6ec4;            // Indigo
+        --footnote-color: rgba(204, 201, 216, 0.6);
     }
 
     // Tokyo Night theme

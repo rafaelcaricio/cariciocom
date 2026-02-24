@@ -10,3 +10,18 @@ pre.giallo {
     right: 10px;
     z-index: 10;
 }
+
+/* Editorial typography polish */
+p {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
+
+blockquote {
+    font-style: italic;
+}
+
+blockquote em,
+blockquote i {
+    font-style: normal;
+}
