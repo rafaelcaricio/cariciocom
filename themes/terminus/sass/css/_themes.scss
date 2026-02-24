@@ -1,10 +1,13 @@
 :root {
-    // Default theme (Purple-Gold)
+    // Default theme (Gemini Editorial)
     &:has(body[data-theme="terminus"]) {
-        --background-color: #1a0a2e;        // Midnight purple (very dark)
-        --text-color: #b9a1e9;              // Biloba Flower (light purple)
-        --accent-color: #e7ba09;            // Corn (gold/yellow)
-        --footnote-color: rgba(185, 161, 233, 0.6); // Muted light purple
+        --background-color: #030303;
+        --text-color: #c0c0c8;
+        --accent-color: #f4f4f5;
+        --footnote-color: rgba(192, 192, 200, 0.6);
+        --text-meta: #52525b;
+        --border-color: #1f1f22;
+        --code-bg: #09090b;
     }
 
     // Tokyo Night theme

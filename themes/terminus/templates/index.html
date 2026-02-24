@@ -31,17 +31,17 @@
 <nav class="pagination">
     <ul>
         {%- if paginator.previous %}
-        <li><a rel="prev" href="{{ paginator.previous | safe }}" aria-label="newer posts">&lt;&nbsp;[newer posts]</a></li>
+        <li><a rel="prev" href="{{ paginator.previous | safe }}" aria-label="newer posts">Newer posts</a></li>
         {%- endif %}
         {%- if paginator.next %}
-        <li><a rel="next" href="{{ paginator.next | safe }}" aria-label="older posts">[older posts]&nbsp;&gt;</a></li>
+        <li><a rel="next" href="{{ paginator.next | safe }}" aria-label="older posts">Older posts</a></li>
         {%- endif %}
     </ul>
 </nav>
 {%- elif blog_section.paginate_by and blog_section.paginate_by < blog_section.pages | length %}
 <nav class="pagination">
     <ul>
-        <li><a href="{{ blog_section.permalink | safe }}" aria-label="all posts">[all posts]&nbsp;&gt;</a></li>
+        <li><a href="{{ blog_section.permalink | safe }}" aria-label="all posts">All posts</a></li>
     </ul>
 </nav>
 {%- endif %}
