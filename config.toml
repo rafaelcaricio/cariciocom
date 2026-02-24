@@ -39,6 +39,8 @@ show_default_author = false
 katex = true
 # Enable copy button for code blocks
 copy_button = true
+# Copyright text
+copyright = "© $YEAR Rafael Caricio :: Powered by [Zola](https://www.getzola.org)"
 
 [[extra.main_menu]]
 name = "Blog"
@@ -59,6 +61,3 @@ trailing_slash = true
 [[extra.socials]]
 name = "github"
 url = "https://github.com/rafaelcaricio"
-
-# Copyright text
-copyright = "© $YEAR Rafael Caricio :: Powered by [Zola](https://www.getzola.org) :: Theme by [Terminus](https://github.com/ebkalderon/terminus)"

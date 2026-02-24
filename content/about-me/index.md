@@ -22,4 +22,4 @@ I explore content related to:
 
 ## Credits
 
-This blog is powered by [Zola](https://www.getzola.org) and uses the [Terminus](https://github.com/ebkalderon/terminus) theme.
+This blog is powered by [Zola](https://www.getzola.org).
