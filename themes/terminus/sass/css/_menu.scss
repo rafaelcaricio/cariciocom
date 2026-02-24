@@ -1,10 +1,8 @@
 @mixin popover-menu {
-    --shadow-color: rgb(from var(--accent-color) r g b / 70%);
-
     color: var(--accent-color);
     background: var(--background-color);
-    border: 1px solid var(--border-color, var(--accent-color));
-    padding: 10px;
+    border: 1px solid var(--border-color, color-mix(in srgb, var(--text-color) 15%, transparent));
+    padding: 1.5rem;
 }
 
 .main-menu {
@@ -45,39 +43,55 @@
                 @include popover-menu;
 
                 display: flex;
-                column-gap: 10px;
                 flex-direction: column;
-                margin-top: calc(40px + var(--line-height));
-                margin-inline: auto 20px;
-                max-width: 33vw;
+                gap: 1.25rem;
+                inset: unset;
+                position-anchor: --menu-button;
+                top: anchor(--menu-button bottom);
+                right: anchor(--menu-button right);
+                margin-top: 0.5rem;
                 width: fit-content;
+                min-width: 140px;
             }
 
             &>li>a {
                 display: block;
-                padding: 5px;
+                padding: 0;
+                font-size: 0.85rem;
             }
         }
     }
 
     &-dropdown-button {
         display: none;
-        border: 1px solid var(--border-color, var(--accent-color));
-        margin-inline-start: 10px;
-        padding: 3px 8px;
+        border: 1px solid var(--border-color, color-mix(in srgb, var(--text-color) 15%, transparent));
+        padding: 6px 14px;
         height: 100%;
-        font-size: 0.8rem;
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        font-weight: 400;
         text-transform: uppercase;
         letter-spacing: 0.1em;
+        color: var(--text-meta, color-mix(in srgb, var(--text-color) 50%, transparent));
+        background: none;
+        transition: color 0.3s ease, border-color 0.3s ease;
+        anchor-name: --menu-button;
 
         @media (max-width: 684px) {
             display: flex;
+            align-items: center;
+        }
+
+        &:hover {
+            color: var(--accent-color);
+            border-color: var(--text-meta);
+            background: none;
         }
 
         &:after {
             content: '';
-            border: 0.35rem solid transparent;
-            border-top-color: var(--accent-color);
+            border: 0.3rem solid transparent;
+            border-top-color: currentColor;
             margin-inline-start: 0.5em;
             transform: translateY(0.15em);
         }

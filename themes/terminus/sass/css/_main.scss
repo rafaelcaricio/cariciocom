@@ -209,17 +209,18 @@ figure {
 
     &:not(.mastodon-post) {
         figcaption {
-            background: var(--accent-color);
-            color: var(--background-color);
+            background: none;
+            color: var(--text-meta, color-mix(in srgb, var(--text-color) 50%, transparent));
             text-align: center;
-            font-size: var(--font-size);
+            font-size: 0.85rem;
+            font-style: italic;
             font-weight: normal;
-            margin-top: 5px;
-            padding: 5px 8px;
-            border-radius: 0 0 var(--radius) var(--radius);
+            margin-top: 0.75rem;
+            padding: 0;
 
             a {
-                color: var(--background-color);
+                color: var(--text-meta, color-mix(in srgb, var(--text-color) 50%, transparent));
+                border-bottom: 1px solid var(--text-meta);
             }
 
             p:first-child {
@@ -252,17 +253,17 @@ ol {
     font-family: var(--font-mono) !important;
     font-feature-settings: normal;
     background: var(--code-bg, color-mix(in srgb, var(--text-color) 5%, transparent));
-    border: 1px solid var(--border-color, color-mix(in srgb, var(--text-color) 10%, transparent));
-    padding: 1px 6px;
+    border: none;
+    padding: 2px 6px;
     margin: 0 2px;
     font-size: 0.85em;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 code {
     @include preformatted;
 
-    color: var(--accent-color);
+    color: var(--text-color);
 
     code {
         background: transparent;
@@ -288,8 +289,8 @@ pre {
     padding: 1.5rem;
     font-size: calc(var(--font-size) * 0.85) !important;
     overflow: auto;
-    border-radius: 2px;
-    border: 1px solid var(--border-color, color-mix(in srgb, var(--text-color) 10%, transparent));
+    border-radius: 4px;
+    border: none;
 
     code {
         background: unset;
@@ -372,17 +373,19 @@ hr {
 
 details {
     position: relative;
-    margin: 25px 0;
+    margin: 2rem 0;
     width: 100%;
-    border: 1px solid var(--border-color, var(--accent-color));
+    border: none;
+    border-top: 1px solid var(--border-color, color-mix(in srgb, var(--text-color) 15%, transparent));
 
     >summary {
-        padding: 3px 10px;
-        color: var(--accent-color);
-        transition: background 0.15s linear;
+        padding: 1rem 0;
+        color: var(--text-color);
+        cursor: pointer;
+        transition: color 0.3s ease;
 
         &:hover {
-            background: color-mix(in srgb, var(--accent-color) 10%, transparent);
+            color: var(--accent-color);
         }
 
         &::marker {
@@ -392,9 +395,8 @@ details {
         &::before {
             display: inline-block;
             content: '';
-            border: 0.35rem solid transparent;
-            border-top-color: var(--accent-color);
-            margin-inline-start: 0.3em;
+            border: 0.3rem solid transparent;
+            border-top-color: currentColor;
             margin-inline-end: 0.75rem;
             transform: rotate(-90deg);
             transition: transform 0.1s ease-out;
@@ -406,14 +408,14 @@ details {
     }
 
     >:not(img, pre > code, summary) {
-        margin-inline: 15px;
+        margin-inline: 0;
 
         &:first-of-type {
-            margin-top: 15px;
+            margin-top: 0;
         }
 
         &:last-child {
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
         }
     }
 }

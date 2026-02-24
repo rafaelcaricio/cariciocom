@@ -1,12 +1,14 @@
 .footer {
-    padding: 40px 0;
+    padding: 4rem 0 2rem;
+    border-top: 1px solid var(--border-color, color-mix(in srgb, var(--text-color) 10%, transparent));
+    margin-top: 4rem;
 
     a {
         color: inherit;
     }
 
     .socials {
-        padding-bottom: 25px;
+        padding-bottom: 1.5rem;
 
         @media print {
             display: none;
@@ -24,20 +26,22 @@
         .social-link {
             display: flex;
             padding: 0.66rem;
+            transition: opacity 0.3s ease;
 
             &>svg {
                 aspect-ratio: 1/1;
-                width: 1.5rem;
+                width: 1.25rem;
                 height: auto;
                 margin: 0 auto;
-                fill: var(--footnote-color);
+                fill: var(--text-meta, color-mix(in srgb, var(--text-color) 40%, transparent));
             }
 
             &:hover {
-                background: var(--accent-color);
+                background: none;
+                opacity: 0.6;
 
                 &>svg {
-                    fill: var(--background-color);
+                    fill: var(--accent-color);
                 }
             }
         }
@@ -46,13 +50,14 @@
     .copyright {
         text-align: center;
         margin: 0;
-        color: color-mix(in srgb, var(--text-color) 65%, transparent);
+        font-size: 0.8rem;
+        color: var(--text-meta, color-mix(in srgb, var(--text-color) 40%, transparent));
 
         &>* {
             text-wrap: nowrap;
 
             &:not(:first-child)::before {
-                content: ':: ';
+                content: ' · ';
             }
         }
     }

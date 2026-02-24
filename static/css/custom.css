@@ -3,12 +3,34 @@ pre.giallo {
     position: relative;
 }
 
-/* Ensure copy button is positioned correctly within code blocks */
+/* Copy button: ghost style, fades in on hover */
 .copy-button {
     position: absolute;
-    top: 6px;
-    right: 10px;
+    top: 0.75rem;
+    right: 0.75rem;
     z-index: 10;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-meta, #52525b);
+    background: none;
+    border: 1px solid var(--border-color, #1f1f22);
+    padding: 4px 10px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+}
+
+pre:hover .copy-button {
+    opacity: 1;
+}
+
+.copy-button:hover {
+    color: var(--accent-color, #f4f4f5);
+    border-color: var(--text-meta, #52525b);
 }
 
 /* Editorial typography polish */
